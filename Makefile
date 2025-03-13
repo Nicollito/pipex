@@ -9,7 +9,7 @@ CFLAGS_DEBUG = -g3
 LIB = libft/libft.a
 
 SRCS_DIR = src
-SRCS =	$(SRCS_DIR)/
+SRCS =	$(SRCS_DIR)/pipex.c
 OBJ_DIR = obj
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
