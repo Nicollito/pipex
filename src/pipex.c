@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:10 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/13 17:09:20 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/14 11:40:55 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	main(int ac, char **av)
 {
+	char *args[] = {"ls", NULL};
+
 	if (ac != 5)
 		return (-1);
 	if (access(av[1], F_OK) == -1)
@@ -22,13 +24,6 @@ int	main(int ac, char **av)
 		perror("Error");
 		return (-1);
 	}
-}
-
-void	do_command(char **av)
-{
-	int	fd_in;
-	int	fd_out;
-
-	fd_in = open(av[1], O_RDONLY);
-	fd_out = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (execve("/usr/bin/ls", args, NULL) == -1)
+		printf("échec\n");
 }
