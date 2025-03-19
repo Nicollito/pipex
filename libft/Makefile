@@ -1,10 +1,11 @@
-.PHONY : all print_src clean fclean re
+.PHONY : all debug print_src print_header clean fclean re
 
 MAKEFLAGS += --no-print-directory
 
 NAME = libft.a
 CC = cc
-CFLAGS = -g3 -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall
+CFLAGS_DEBUG = -g3
 
 SRCS =	ft_isalpha.c \
 		ft_isdigit.c \
@@ -72,6 +73,10 @@ $(NAME) : $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 	@echo "🎊🥳 Librairie créée 🥳🎊"
 
+debug :
+	@echo "🛠️ Compilation libft avec $(CFLAGS) $(CFLAGS_DEBUG) 🛠️"
+	@$(MAKE) re CFLAGS="$(CFLAGS) $(CFLAGS_DEBUG)"
+
 print_src :
 	@echo $(SRCS)
 
@@ -87,6 +92,4 @@ fclean :
 	@rm -rf $(NAME)
 	@echo "🫧🧽 Libft toute propre, ELLE !! 🧽🫧"
 
-re : 
-	@$(MAKE) fclean 
-	@$(MAKE) all
+re : fclean all

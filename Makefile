@@ -4,9 +4,11 @@ MAKEFLAGS += --no-print-directory
 
 NAME = pipex
 CC = cc
-CFLAGS = -Werror -Wextra -Wall -g3
-CFLAGS_DEBUG = -g3
+CFLAGS = -Werror -Wextra -Wall
 LIB = libft/libft.a
+
+CFLAGS_DEBUG = -g3
+DEBUG_MODE =
 
 SRCS_DIR = src
 SRCS =	$(SRCS_DIR)/pipex.c
@@ -50,18 +52,19 @@ $(LIB) : $(addprefix libft/, $(SRCS_LIB) $(HEADER_LIB)) libft/Makefile
 	@echo "🎶📳 Appel libft 📳🎶"
 	@$(MAKE) -C libft
 
-debug : CFLAGS += $(CFLAGS_DEBUG)
-
 debug :
-	@echo "Compilation avec $(CFLAGS)"
-	@$(MAKE) re
+	@echo "🛠️ Compilation pipex avec $(CFLAGS) $(CFLAGS_DEBUG) 🛠️"
+	@$(MAKE) debug -C libft
+	@$(MAKE) re CFLAGS="$(CFLAGS) $(CFLAGS_DEBUG)" DEBUG_MODE=debug
 
 clean :
 	@rm -rf $(OBJ_DIR)
 	@echo "💨🧹 Nettoyage objets 🧹💨"
 
 fclean : clean
+ifndef DEBUG_MODE
 	@$(MAKE) fclean -C libft
+endif
 	@rm -rf $(NAME)
 	@echo "🫧🧽 Tout est clean !!🧽🫧"
 
