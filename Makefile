@@ -11,7 +11,11 @@ CFLAGS_DEBUG = -g3
 DEBUG_MODE =
 
 SRCS_DIR = src
-SRCS =	$(SRCS_DIR)/pipex.c
+SRCS =	$(SRCS_DIR)/fds.c \
+		$(SRCS_DIR)/free_all.c \
+		$(SRCS_DIR)/ft_error.c \
+		$(SRCS_DIR)/initialize.c \
+		$(SRCS_DIR)/pipex.c $(SRCS_DIR)/tmp.c
 OBJ_DIR = obj
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
