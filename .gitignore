@@ -2,3 +2,8 @@ obj/
 *.o
 *.a
 pipex
+infile
+outfile
+yo
+tmp.h
+tmp.c

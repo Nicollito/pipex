@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:44 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/20 16:37:33 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:34:32 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <errno.h>
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
+# include "../libft/ft_printf.h"
 
 typedef struct utils
 {
@@ -46,6 +47,7 @@ void	free_matrix(char **mat);
 
 // ft_error.c
 void	ft_error(t_utils *utils);
+void	error_cmd(t_utils *utils, char *cmd);
 
 // initialize.c
 void	set_utils_null(t_utils *utils);

@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:34:35 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/20 16:48:28 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:35:11 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ char	*get_path(t_utils *utils, char **which_args)
 	int		pid;
 
 	pid = fork();
+	if (pid > 0)
+	{
+		close(utils->pipefd[1]);
+		utils->pipefd[1] = -1;
+	}
 	if (pid == 0)
 	{
 		dup2(utils->pipefd[1], STDOUT_FILENO);
@@ -82,8 +87,10 @@ char	*get_path(t_utils *utils, char **which_args)
 	wait(NULL);
 	res = get_next_line(utils->pipefd[0]);
 	if (!res)
-		ft_error(utils);
+		error_cmd(utils, which_args[1]);
 	if (res[ft_strlen(res) - 1] == '\n')
 		res[ft_strlen(res) - 1] = '\0';
+	close(utils->pipefd[0]);
+	pipe(utils->pipefd);
 	return (res);
 }
