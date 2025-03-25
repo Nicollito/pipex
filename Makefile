@@ -4,7 +4,7 @@ MAKEFLAGS += --no-print-directory
 
 NAME = pipex
 CC = cc
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -Iinclude
 LIB = libft/libft.a
 
 CFLAGS_DEBUG = -g3

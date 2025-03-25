@@ -4,6 +4,8 @@ obj/
 pipex
 infile
 outfile
+outfiles
 yo
 tmp.h
 tmp.c
+42_pipex_tester

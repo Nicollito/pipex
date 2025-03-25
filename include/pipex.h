@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:44 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/21 11:34:32 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:37:25 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@
 
 typedef struct utils
 {
+	int		file_exist;
 	int		fd_in;
 	int		fd_out;
 	int		pid;
 	int		pipefd[2];
+	int		status;
+	int		return_value;
 	char	*path1;
 	char	*path2;
 	char	**args1;
@@ -56,7 +59,9 @@ char	**set_which_args(t_utils *utils, char *cmd);
 char	*get_path(t_utils *utils, char **which_args);
 
 // pipex.c (main)
-void	do_cmd(t_utils *utils, char **env);
-void	check_cmd(t_utils *utils);
+void	clear_pipe(t_utils *utils);
+void	set_exit(t_utils *utils);
+void	do_cmd1(t_utils *utils, char **env);
+void	do_cmd2(t_utils *utils, char **env);
 
 #endif

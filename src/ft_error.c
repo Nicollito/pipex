@@ -6,11 +6,11 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:24:02 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/21 11:39:21 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:33:07 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "pipex.h"
 
 void	ft_error(t_utils *utils)
 {

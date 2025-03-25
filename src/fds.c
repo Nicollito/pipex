@@ -6,11 +6,11 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:29:08 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/20 14:29:56 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:38:21 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "pipex.h"
 
 void	open_files_read(t_utils *utils, char **av)
 {

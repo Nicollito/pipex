@@ -6,11 +6,11 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:34:35 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/21 11:35:11 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:38:54 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "pipex.h"
 
 void	set_utils_null(t_utils *utils)
 {
@@ -28,6 +28,7 @@ void	set_utils_null(t_utils *utils)
 
 void	init_utils(t_utils *utils, char **av)
 {
+	set_utils_null(utils);
 	open_files_read(utils, av);
 	utils->args1 = ft_split(av[2], ' ');
 	if (!utils->args1)
@@ -37,7 +38,6 @@ void	init_utils(t_utils *utils, char **av)
 		ft_error(utils);
 	utils->which_args1 = set_which_args(utils, utils->args1[0]);
 	utils->which_args2 = set_which_args(utils, utils->args2[0]);
-	// check_cmd(utils);
 	utils->path1 = get_path(utils, utils->which_args1);
 	utils->path2 = get_path(utils, utils->which_args2);
 }
