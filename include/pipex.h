@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:44 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/26 14:04:08 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:13:47 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct utils
 // fds.c
 void	open_files_read(t_utils *utils, char **av);
 void	close_fd(t_utils *utils);
+void	clear_pipe(t_utils *utils);
 
 // free_all.c
 void	free_all(t_utils *utils);
@@ -52,6 +53,7 @@ void	free_matrix(char **mat);
 // ft_error.c
 void	ft_error(t_utils *utils);
 void	error_cmd(t_utils *utils, char *cmd, int nb_cmd);
+void	set_exit(t_utils *utils);
 
 // initialize.c
 void	set_utils_null(t_utils *utils);
@@ -60,8 +62,6 @@ char	**set_which_args(t_utils *utils, char *cmd);
 char	*get_path(t_utils *utils, char **which_args, int nb_cmd);
 
 // pipex.c (main)
-void	clear_pipe(t_utils *utils);
-void	set_exit(t_utils *utils);
 void	do_cmd1(t_utils *utils, char **env);
 void	do_cmd2(t_utils *utils, char **env);
 

@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:34:35 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/26 14:04:30 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:21:03 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ char	**set_which_args(t_utils *utils, char *cmd)
 		free(res);
 		ft_error(utils);
 	}
-	res[1] = ft_strdup(cmd);
+	if (!cmd)
+		res[1] = ft_strdup("");
+	else
+		res[1] = ft_strdup(cmd);
 	if (!res[1])
 	{
 		free(res[0]);

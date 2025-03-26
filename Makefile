@@ -1,4 +1,4 @@
-.PHONY : NAME all real-all debug clean fclean re
+.PHONY : all check-build real-all debug clean fclean re norminette valgrind
 
 MAKEFLAGS += --no-print-directory
 
@@ -9,6 +9,8 @@ LIB = libft/libft.a
 
 CFLAGS_DEBUG = -g3
 DEBUG_MODE =
+VALGRIND_FLAGS = --track-fds=yes --track-origins=yes --leak-check=full
+ARGS = infile \"ls -l\" cat outfile
 
 SRCS_DIR = src
 SRCS =	$(SRCS_DIR)/fds.c \
@@ -73,3 +75,9 @@ endif
 	@echo "🫧🧽 Tout est clean !!🧽🫧"
 
 re : fclean all
+
+norminette :
+	@norminette $(SRCS) $(HEADER) $(addprefix libft/, $(SRCS_LIB)) || true
+
+valgrind :
+	@valgrind $(VALGRIND_FLAGS) ./$(NAME) $(ARGS) || true

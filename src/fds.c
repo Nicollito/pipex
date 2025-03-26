@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:29:08 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/26 11:28:26 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:13:31 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,14 @@ void	close_fd(t_utils *utils)
 		close(utils->pipefd[0]);
 	if (utils->pipefd[1] != -1)
 		close(utils->pipefd[1]);
+}
+
+void	clear_pipe(t_utils *utils)
+{
+	int		b_read;
+	char	buffer[10];
+
+	b_read = read(utils->pipefd[0], buffer, 10);
+	while (b_read == 10)
+		b_read = read(utils->pipefd[0], buffer, 10);
 }
