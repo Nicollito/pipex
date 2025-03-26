@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:29:08 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/25 18:38:21 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:28:26 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	open_files_read(t_utils *utils, char **av)
 {
 	utils->fd_in = open(av[1], O_RDONLY);
-	utils->fd_out = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0655);
+	utils->fd_out = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	pipe(utils->pipefd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:10 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/25 18:38:37 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:40:53 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 5)
 		return (-1);
-	utils.file_exist = access(av[1], F_OK | W_OK);
-	if (utils.file_exist == -1)
-		perror("Error");
 	init_utils(&utils, av);
 	pid = fork();
 	if (pid == 0)
@@ -58,6 +55,8 @@ void	set_exit(t_utils *utils)
 	exit_value = 0;
 	if (utils->return_value == 1)
 		exit_value = 1;
+	if (utils->file_exist == -1)
+		perror("Error");
 	close_fd(utils);
 	free_all(utils);
 	exit(exit_value);
@@ -73,7 +72,8 @@ void	do_cmd1(t_utils *utils, char **envp)
 		dup2(utils->fd_in, STDIN_FILENO);
 		dup2(utils->pipefd[1], STDOUT_FILENO);
 		close_fd(utils);
-		execve(utils->path1, utils->args1, envp);
+		if (utils->file_exist != -1)
+			execve(utils->path1, utils->args1, envp);
 		free_all(utils);
 		exit(1);
 	}
@@ -98,7 +98,8 @@ void	do_cmd2(t_utils *utils, char **envp)
 		dup2(utils->pipefd[0], STDIN_FILENO);
 		dup2(utils->fd_out, STDOUT_FILENO);
 		close_fd(utils);
-		execve(utils->path2, utils->args2, envp);
+		if (utils->file2_perm != -1)
+			execve(utils->path2, utils->args2, envp);
 		free_all(utils);
 		exit(1);
 	}
