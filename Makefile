@@ -10,7 +10,7 @@ LIB = libft/libft.a
 CFLAGS_DEBUG = -g3
 DEBUG_MODE =
 VALGRIND_FLAGS = --track-fds=yes --track-origins=yes --leak-check=full
-ARGS = infile \"ls -l\" cat outfile
+ARGS = Makefile cat cat outf
 
 SRCS_DIR = src
 SRCS =	$(SRCS_DIR)/fds.c \
