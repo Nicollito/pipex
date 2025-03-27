@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:10 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/26 15:15:52 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/27 10:06:49 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,7 @@ int	main(int ac, char **av, char **envp)
 	if (pid == -1)
 		ft_error(&utils);
 	if (pid == 0)
-	{
-		if (utils.file_exist == -1)
-		{
-			close_fd(&utils);
-			free_all(&utils);
-			exit(1);
-		}
 		do_cmd1(&utils, envp);
-	}
 	if (pid > 0)
 		do_cmd2(&utils, envp);
 	clear_pipe(&utils);
@@ -42,6 +34,12 @@ int	main(int ac, char **av, char **envp)
 
 void	do_cmd1(t_utils *utils, char **envp)
 {
+	if (utils->file_exist == -1)
+	{
+		close_fd(utils);
+		free_all(utils);
+		exit(1);
+	}
 	utils->pid = fork();
 	if (utils->pid == -1)
 		ft_error(utils);
