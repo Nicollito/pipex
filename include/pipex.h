@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:44 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/26 15:13:47 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/28 10:21:08 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct utils
 	int		pipefd[2];
 	int		status;
 	int		return_value;
+	int		exit_value;
 	char	*path1;
 	char	*path2;
 	char	**args1;
