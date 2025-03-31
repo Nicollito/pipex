@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:34:35 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/28 10:26:41 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:12:33 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	set_utils_null(t_utils *utils)
 	utils->pipefd[0] = -1;
 	utils->pipefd[1] = -1;
 	utils->exit_value = 0;
+	utils->skip_yes = 0;
 	utils->path1 = NULL;
 	utils->path2 = NULL;
 	utils->args1 = NULL;
@@ -42,7 +43,12 @@ void	init_utils(t_utils *utils, char **av)
 	utils->which_args1 = set_which_args(utils, utils->args1[0]);
 	utils->which_args2 = set_which_args(utils, utils->args2[0]);
 	utils->path1 = get_path(utils, utils->which_args1, 1);
+	if (!utils->path1)
+		utils->path1 = set_path_none(utils);
+	check_yes(utils);
 	utils->path2 = get_path(utils, utils->which_args2, 2);
+	if (!utils->path2)
+		utils->path2 = set_path_none(utils);
 }
 
 char	**set_which_args(t_utils *utils, char *cmd)

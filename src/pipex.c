@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:10 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/27 10:06:49 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:14:01 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av, char **envp)
 	int		pid;
 
 	if (ac != 5)
-		return (-1);
+		return (1);
 	init_utils(&utils, av);
 	pid = fork();
 	if (pid == -1)
@@ -48,7 +48,7 @@ void	do_cmd1(t_utils *utils, char **envp)
 		dup2(utils->fd_in, STDIN_FILENO);
 		dup2(utils->pipefd[1], STDOUT_FILENO);
 		close_fd(utils);
-		if (utils->file_exist != -1)
+		if (utils->file_exist != -1 && !utils->skip_yes)
 			execve(utils->path1, utils->args1, envp);
 		free_all(utils);
 		exit(1);

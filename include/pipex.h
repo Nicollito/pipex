@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:44 by nimadela          #+#    #+#             */
-/*   Updated: 2025/03/28 10:21:08 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:12:09 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct utils
 	int		status;
 	int		return_value;
 	int		exit_value;
+	int		skip_yes;
 	char	*path1;
 	char	*path2;
 	char	**args1;
@@ -54,7 +55,9 @@ void	free_matrix(char **mat);
 // ft_error.c
 void	ft_error(t_utils *utils);
 void	error_cmd(t_utils *utils, char *cmd, int nb_cmd);
+void	check_yes(t_utils *utils);
 void	set_exit(t_utils *utils);
+char	*set_path_none(t_utils *utils);
 
 // initialize.c
 void	set_utils_null(t_utils *utils);
