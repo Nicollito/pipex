@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:39:22 by nimadela          #+#    #+#             */
-/*   Updated: 2025/04/03 10:54:28 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:27:46 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
-#include "../include/tmp.h"
+
 typedef struct s_list
 {
 	void			*content;

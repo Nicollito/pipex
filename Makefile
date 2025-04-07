@@ -1,4 +1,4 @@
-.PHONY : all check-build real-all debug clean fclean re norminette valgrind
+.PHONY : all check-build real-all debug clean fclean re norminette
 
 MAKEFLAGS += --no-print-directory
 
@@ -17,7 +17,7 @@ SRCS =	$(SRCS_DIR)/fds.c \
 		$(SRCS_DIR)/free_all.c \
 		$(SRCS_DIR)/ft_error.c \
 		$(SRCS_DIR)/initialize.c \
-		$(SRCS_DIR)/pipex.c $(SRCS_DIR)/tmp.c
+		$(SRCS_DIR)/pipex.c
 OBJ_DIR = obj
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -78,6 +78,3 @@ re : fclean all
 
 norminette :
 	@norminette $(SRCS) $(HEADER) $(addprefix libft/, $(SRCS_LIB)) || true
-
-valgrind :
-	@valgrind $(VALGRIND_FLAGS) ./$(NAME) $(ARGS) || true
