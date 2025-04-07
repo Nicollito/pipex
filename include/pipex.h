@@ -6,7 +6,7 @@
 /*   By: nimadela <nimadela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:11:44 by nimadela          #+#    #+#             */
-/*   Updated: 2025/04/01 11:08:33 by nimadela         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:38:10 by nimadela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	set_utils_null(t_utils *utils);
 void	init_utils(t_utils *utils, char **av);
 char	**set_which_args(t_utils *utils, char *cmd);
 char	*get_path(t_utils *utils, char **which_args, int nb_cmd);
+char	*get_and_set_res(t_utils *utils, char **which_args, int nb_cmd);
 
 // pipex.c (main)
 void	do_cmd1(t_utils *utils, char **env);

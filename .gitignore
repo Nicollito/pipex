@@ -1,4 +1,5 @@
 obj/
+script/
 *.o
 *.a
 pipex
@@ -18,3 +19,4 @@ zombie_test3
 zombie_test4
 oui
 OUI
+test
