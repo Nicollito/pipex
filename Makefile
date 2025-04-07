@@ -22,7 +22,7 @@ OBJ_DIR = obj
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 HEADER_DIR = include
-HEADER = $(HEADER_DIR)/
+HEADER = $(HEADER_DIR)/pipex.h
 
 SRCS_LIB = $(shell make -s -C libft print_src)
 HEADER_LIB = $(shell make -s -C libft print_header)
